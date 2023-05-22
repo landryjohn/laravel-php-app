@@ -42,7 +42,7 @@ jobs:
       - name: Install and build Artefacts
         run: | 
           npm install 
-          npm build
+          npm run build
 
       - name: Run App Test suite 
         run: php artisan test
