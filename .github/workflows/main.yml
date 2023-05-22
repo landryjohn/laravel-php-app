@@ -46,3 +46,19 @@ jobs:
 
       - name: Run App Test suite 
         run: php artisan test
+
+      - name: 🤖️ Ready to start the production deployment 
+        run: echo "READY TO START ...🍃️" 
+      - name: '[1/2] => Laravel PHP App: 🚀 Production deployment : Files synchronization ...' 
+        if: ${{ github.ref == 'refs/heads/master' }}
+        # We are using the amKirkland/FTP-Deploy-Action@4.3.3 Action in other to handle FTP operations
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          # ftp server
+          server: ${{ secrets.HOST_SERVER }}
+          # ftp username 
+          username: ${{ secrets.FTP_USERNAME }}
+          # ftp password
+          password: ${{ secrets.FTP_USER_PASSWORD }}
+          # server dst dir. Let it to the defualt value : ./ 
+          # Which is the user default directory
